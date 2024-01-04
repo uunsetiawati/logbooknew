@@ -1,0 +1,21 @@
+{
+	"short_name": "E-Logbook UPT KUKM JATIM",
+	"name": "Laporan Kinerja Harian UPT KUKM JATIM",
+	"icons": [
+		{
+			"src": "/assets/icon-192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/assets/icon-192.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"start_url": "/?source=pwa",
+	"background_color": "#196e0d",
+	"display": "standalone",
+	"scope": "/",
+	"theme_color": "#196e0d"
+}
