@@ -287,18 +287,20 @@ class Log_book extends CI_Controller
 		} else {
 			$post = $this->input->post(null, TRUE);
 			$tgl = date('d-m-Y');
-			$config['upload_path']          = 'assets/dist/img/foto-tugas/';
+			$config['upload_path']          = 'assets/dist/img/foto-tugas';
 			$config['allowed_types']        = 'jpg|png|jpeg';
 			$config['max_size']             = 1000;
 			$config['file_name']            = $id . '--' . $tgl;
 
 			$this->load->library('upload', $config);
 
-
 			if ($this->upload->do_upload('gambar')) {
 
 				$post['gambar'] = $this->upload->data('file_name');
-			} else {
+			} else if($this->upload->do_upload('gambar') == null)
+			{
+				$post['gambar'] = null;
+			} else{
 				$pesan = $this->upload->display_errors();
 				$this->session->set_flashdata('danger', $pesan);
 				redirect('log_book/tugas/' . $id);
