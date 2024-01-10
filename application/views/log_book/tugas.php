@@ -18,7 +18,7 @@
             <div class="form-group">
               <label>Deskripsi Tugas</label>
               <div class="input-group mb-3">
-                <textarea class="form-control" rows="5" col="5" name="des_tugas" id="summernote3" required minlength="100"></textarea>
+                <textarea class="form-control" rows="5" col="5" name="des_tugas" id="summernote3" required minlength="30"></textarea>
                 <?php echo form_error('des_tugas')?>                
               </div>                                                                  
             </div>
