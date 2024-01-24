@@ -380,9 +380,9 @@ class Form extends CI_Controller
 				//Kirim WA Ke Admin
 				$kalimat = "*Seseorang baru saja mendaftarkan Perizinan " . $post['tipe'] . "*, adapun detail data sebagai berikut: \n\n" . $post['nama'] . "\nAsal " . $post['asal'] . "\nNomor HP " . $post['hp'] . "\nRencana tanggal " . $post['tgl'] . "\nJam " . $post['sesi'] . " secara " . $post['teknis'] . "\n\nuptkukm.id\nSemangat selalu BerKhidmat untuk Lembaga, Bangsa, dan Negara";
 				$this->wa->waWhacenter("085235142348", $kalimat); // Mbak UUN
-				$this->wa->waWhacenter("081231390340", $kalimat); // Fitrah
+				// $this->wa->waWhacenter("081231390340", $kalimat); // Fitrah
 				$this->wa->waWhacenter("081232757574", $kalimat); //Mas Rois
-				$this->wa->waWhacenter("082331513590", $kalimat); // Mbak Dara
+				// $this->wa->waWhacenter("082331513590", $kalimat); // Mbak Dara
 				$this->wa->waWhacenter("082242899015", $kalimat); // Intan
 				//Kirim WA Ke Pelanggan
 				// $this->wa->waWhacenter($post['hp'],"Terima kasih, ".$post['nama']." telah melakukan pendaftaran. Selanjutnya anda akan dikonfirmasi oleh admin. Apabila ada pertanyaan bisa menghubungi Call Center kami di 081331220006. Terima Kasih.\n\nKoperasi Jaya Sejahtera!");
@@ -438,7 +438,7 @@ class Form extends CI_Controller
 				$this->session->set_flashdata('success', 'Pendaftaran Berhasil, Sampai Jumpa di Malang...');
 				//Kirim Notifikasi WA
 				$kalimat = "*Seseorang baru saja mendaftarkan Podcast*, adapun detail data sebagai berikut: \n\n" . $post['nama'] . "\nNomor HP " . $post['hp'] . "\nRencana tanggal " . $post['tgl'] . "\n\nSemangat selalu BerKhidmat untuk Lembaga, Bangsa, dan Negara";
-				$this->wa->waWhacenter("081231390340", $kalimat); // FItrah
+				// $this->wa->waWhacenter("081231390340", $kalimat); // FItrah
 				$this->wa->waWhacenter("083849319535", $kalimat); // Aan
 				$this->wa->waWhacenter("081232757574", $kalimat); // Mas Rois
 				$this->wa->waWhacenter("081331208584", $kalimat); // Pak Anom
