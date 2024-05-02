@@ -15,7 +15,7 @@
 				<div class="small-box bg-white">
 					<div class="inner text-center">
 						<a href="<?= base_url('profil') ?>">
-							<img src="<?= base_url("") ?>/assets/dist/img/profil.png" alt="" width="100%">
+							<img src="<?= base_url("") ?>/assets/dist/img/profilnew.png" alt="" width="100%">
 						</a>
 					</div>
 					<a href="<?= base_url('profil') ?>" class="btn btn-success d-block">
@@ -29,7 +29,7 @@
 				<div class="small-box bg-white">
 					<div class="inner text-center">
 						<a href="<?= base_url('log_book') ?>">
-							<img src="<?= base_url("") ?>/assets/dist/img/log_book.png" alt="" width="100%">
+							<img src="<?= base_url("") ?>/assets/dist/img/log_booknew.png" alt="" width="100%">
 						</a>
 					</div>
 					<a href="<?= base_url('log_book') ?>" class="btn btn-success d-block">
@@ -43,7 +43,7 @@
 				<div class="small-box bg-white">
 					<div class="inner text-center">
 						<a href="<?= base_url('notulensi') ?>">
-							<img src="<?= base_url("") ?>/assets/dist/img/notulensi.png" alt="" width="100%">
+							<img src="<?= base_url("") ?>/assets/dist/img/notulensinew.png" alt="" width="100%">
 						</a>
 					</div>
 					<a href="<?= base_url('notulensi') ?>" class="btn btn-success d-block">
