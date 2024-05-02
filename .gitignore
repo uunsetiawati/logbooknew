@@ -32,3 +32,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /application/config/config.php
 /application/config/database.php
 /u9023553_app.sql
+/assets/dist/img/
