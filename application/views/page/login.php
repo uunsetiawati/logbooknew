@@ -40,7 +40,9 @@
   </style>
 </head>
 
-<body class="hold-transition login-page bg-green pace-warning" style="background-image: url(<?= base_url('/assets/dist/img/tiles.jpg') ?>); background-repeat: repeat;">
+<body class="hold-transition login-page bg-green pace-warning" style="background-image: url(<?= 
+base_url('/assets/dist/img/tiles.jpg') ?>); background-size: cover;">
+
   <div class="login-box">
     <!-- /.login-logo -->
     <div class="card">
