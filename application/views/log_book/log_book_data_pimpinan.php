@@ -115,9 +115,12 @@
                   </td>                  
                   <td>
                     <a href="<?= site_url('log_book/tugas_pimpinan/'.$data->id);?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Beri Tugas</a></br>
-                    <a href="<?= site_url('log_book/detail/'.$data->id);?>" class="btn btn-info btn-sm"><i class="fas fa-list"></i> Detail</a>
+                    <a href="<?= site_url('log_book/detail/'.$data->id);?>" class="btn btn-info btn-sm"><i class="fas fa-list"></i> Detail</a><br>
+
                     <?php if ($this->fungsi->hitung_rows_triple("tb_poin","user_id",$data->id,"penilai_id",$this->session->id,"tgl",date("Y-m-d")) == null) {?>                      
-                      <a href="<?= site_url('log_book/apresiasi/'.$data->id);?>" class="btn btn-success btn-sm"><i class="fas fa-gem"></i> Apresiasi</a>
+                      <a href="<?= site_url('log_book/apresiasi_gold/'.$data->id);?>" class="btn btn-light btn-sm" data-placement="top" title="Gold : Poin 15"><i class="fas fa-medal" style='font-size:24px;color:gold'></i></a>
+                      <a href="<?= site_url('log_book/apresiasi_silver/'.$data->id);?>" class="btn btn-light btn-sm" data-placement="top" title="Silver : Poin 10"><i class="fas fa-medal" style='font-size:24px;color:silver'></i></a>
+                      <a href="<?= site_url('log_book/apresiasi_bronze/'.$data->id);?>" class="btn btn-light btn-sm" data-placement="top" title="Bronze : Poin 5"><i class="fas fa-medal" style='font-size:24px;color: brown'></i></a>
                     <?php } else { ?>
                       <a href="<?= site_url('log_book/apresiasi_batal/'.$data->id);?>" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Batal Apresiasi</a>
                     <?php } ?>

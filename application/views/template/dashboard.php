@@ -85,6 +85,12 @@
 								<p>Beranda</p>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a href="<?= site_url('best_employee') ?>" class="nav-link <?= $this->uri->segment(1) == 'best_employee' ? "active" : "" ?>">
+								<i class="nav-icon fas fa-trophy" style='font-size:24px;color:gold'></i>
+								<p><b>BEST EMPLOYEE</b></p>
+							</a>
+						</li>
 						<li class="nav-header">FITUR</li>
 						<li class="nav-item">
 							<a href="<?= site_url('log_book') ?>" class="nav-link <?= $this->uri->segment(1) == 'log_book' ? "active" : "" ?>">
@@ -100,6 +106,12 @@
 								</a>
 							</li>
 						<?php } ?>
+						<li class="nav-item">
+							<a href="<?= site_url('page/clouddoc') ?>" class="nav-link <?= $this->uri->segment(1) == 'clouddoc' ? "active" : "" ?>">
+								<i class="nav-icon fas fa-folder-open"></i>
+								<p>Cloud Doc</p>
+							</a>
+						</li>
 						<?php if ($this->fungsi->hitung_rows("akses_notulensi", "user_id", $this->session->id) != null or $this->session->tipe_user == '4') { ?>
 							<li class="nav-item">
 								<a href="<?= site_url('notulensi') ?>" class="nav-link <?= $this->uri->segment(1) == 'notulensi' ? "active" : "" ?>">
@@ -157,24 +169,30 @@
 								</a>
 							</li> -->
 						<?php } ?>
+						<?php if ($this->fungsi->hitung_rows("akses_link", "user_id", $this->session->id) != null or $this->session->tipe_user == '4') { ?>
 						<li class="nav-item">
 							<a href="<?= site_url('perizinan') ?>" class="nav-link <?= $this->uri->segment(1) == 'perizinan' ? "active" : "" ?>">
 								<i class="nav-icon fas fa-list"></i>
 								<p>Perizinan</p>
 							</a>
 						</li>
+						<?php } ?>
+						<?php if ($this->fungsi->hitung_rows("akses_link", "user_id", $this->session->id) != null or $this->session->tipe_user == '4') { ?>
 						<li class="nav-item">
 							<a href="<?= site_url('podcast') ?>" class="nav-link <?= $this->uri->segment(1) == 'podcast' ? "active" : "" ?>">
 								<i class="nav-icon fas fa-list"></i>
 								<p>Podcast</p>
 							</a>
 						</li>
+						<?php } ?>
+						<?php if ($this->fungsi->hitung_rows("akses_link", "user_id", $this->session->id) != null or $this->session->tipe_user == '4') { ?>
 						<li class="nav-item">
 							<a href="<?= site_url('sertifikat') ?>" class="nav-link <?= $this->uri->segment(1) == 'sertifikat' ? "active" : "" ?>">
 								<i class="nav-icon fas fa-list"></i>
 								<p>Sertifikat</p>
 							</a>
 						</li>
+						<?php } ?>
 					</ul>
 				</nav>
 				<!-- /.sidebar-menu -->
@@ -187,7 +205,7 @@
 			<div class="content-header">
 				<div class="container-fluid">
 					<div class="row mb-2">
-						<div class="col-sm-6">
+						<div class="col-sm-12">
 							<h1 class="m-0 text-dark"><?= $menu ?></h1>
 						</div><!-- /.col -->
 					</div><!-- /.row -->

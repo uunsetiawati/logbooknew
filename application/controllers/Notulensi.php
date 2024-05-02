@@ -8,7 +8,7 @@ class notulensi extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('notulensi_m');
-		$this->fungsi->check_access_user("akses_notulensi", $this->session->id);
+		// $this->fungsi->check_access_user("akses_notulensi", $this->session->id);
 	}
 
 	function index()
@@ -49,11 +49,16 @@ class notulensi extends CI_Controller
 			$row[] = $no;
 			$row[] = $field->kode;
 			$row[] = $field->acara;
-			$row[] = '<a href="' . base_url("notulensi/detail/" . $field->id) . '" class="btn btn-success btn-xs"><i class="fas fa-list"></i> Lihat Hasil</a>
+			if($this->session->tipe_user=='4'){
+				$row[] = '<a href="' . base_url("notulensi/detail/" . $field->id) . '" class="btn btn-success btn-xs"><i class="fas fa-list"></i> Lihat Hasil</a>
                       <a href="' . base_url("notulensi/edit/" . $field->id) . '" class="btn btn-info btn-xs"><i class="fas fa-edit"></i> Edit</a>
             		  <a href="' . base_url("notulensi/hapus/" . $field->id) . '" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i> Hapus</a>
             		  <a href="https://api.whatsapp.com/send?phone=&text=Lihat%20Notulensi%20dengan%20mengunjungi%20link%20dibawah%20ini%0A%0A%0ALink%20%3A%20' . base_url("publik/notulensi/" . $field->kode) . '" class="btn btn-secondary btn-xs"><i class="fas fa-paper-plane"></i> Share</a>
             		 ';
+			}else{
+				$row[] = '<a href="' . base_url("notulensi/detail/" . $field->id) . '" class="btn btn-success btn-xs"><i class="fas fa-list"></i> Lihat Hasil</a>';
+			}
+			
 			$data[] = $row;
 		}
 

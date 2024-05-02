@@ -120,12 +120,12 @@ class Log_book_m extends CI_Model {
 	  $this->db->insert('tb_poin',$params);	  	 		  	 		   			
 	}
 
-	function apresiasi_batal($id, $kode)
+	function apresiasi_batal($id)
 	{
 	  $this->db->where('user_id', $id);
 	  $this->db->where('penilai_id', $this->session->id);
 	  $this->db->where('tgl', date("Y-m-d"));
-	  $this->db->where('kategori_penilaian', $kode);
+	//   $this->db->where('kategori_penilaian', $kode);
 	  $this->db->delete('tb_poin');
 	}
 

@@ -23,5 +23,7 @@
       $this->load->view("script/datatables-header");
     } elseif ($this->uri->segment(1) == "publik" and $this->uri->segment(2) == "agenda") {
       $this->load->view("script/datatables-header");
+    } elseif ($url_1 == "best_employee") {
+      $this->load->view("script/datatables-header");
     }
   ?>

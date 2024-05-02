@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Log_book extends CI_Controller
+class Best_employee extends CI_Controller
 {
 
 	public function __construct()
@@ -14,6 +14,61 @@ class Log_book extends CI_Controller
 	}
 
 	public function index()
+	{
+		// $query= $this->db->get_where('tb_data_pelatihan', array('kodeunik' => $kodeunik, 'status'=>'1'))->row_array();
+		// $query=$this->db->query("SELECT * FROM tb_poin JOIN tb_user where tb_poin.user_id=tb_user.id");
+		// $hasil= $query->result();
+		// foreach($hasil as $row){
+		// 	echo $row->nama.'-'.$row->nilai;
+		// }
+
+		$bulan_indonesia = array(
+			1 => 'Januari',
+			2 => 'Februari',
+			3 => 'Maret',
+			4 => 'April',
+			5 => 'Mei',
+			6 => 'Juni',
+			7 => 'Juli',
+			8 => 'Agustus',
+			9 => 'September',
+			10 => 'Oktober',
+			11 => 'November',
+			12 => 'Desember'
+		);
+		// Dapatkan bulan ini dalam format angka (1-12)
+		$bulan_ini_angka = date('n');
+
+		// Ambil nama bulan berdasarkan array bulan Indonesia
+		$bulan_ini_indonesia = $bulan_indonesia[$bulan_ini_angka];
+		$tahun_ini = date('Y');
+		$query = $this->db->query("
+			SELECT tb_user.*, SUM(tb_poin.nilai) AS total_poin
+			FROM tb_user
+			JOIN tb_poin ON tb_user.id = tb_poin.user_id
+			WHERE tb_user.status=1
+			AND MONTH(tb_poin.tgl) = $bulan_ini_angka
+    		AND YEAR(tb_poin.tgl) = $tahun_ini
+			GROUP BY tb_user.nama
+			ORDER BY total_poin DESC
+		");	
+		
+
+		// $hasil = $query->result_array();
+		$data['hasil']=$query->result_array();
+
+		// foreach ($hasil as $row) {
+		// 	echo $row['nama'] . ' - ' . $row['total_poin'];
+		// }
+		// echo $hasil[1]['nama'];
+		
+
+		$data['menu'] = "Best Employee Bulan ".$bulan_ini_indonesia." Tahun ".$tahun_ini;
+		// $data['row'] = $this->log_book_m->get_bulan_sekarang($id);
+		$this->templateadmin->load('template/dashboard', 'best_employee/best_employee_data',$data);
+	}
+
+	public function indexx()
 	{
 		// Cek Admin
 		$tipe_user = $this->session->tipe_user;
@@ -39,29 +94,46 @@ class Log_book extends CI_Controller
 		$post = $this->input->post(null, TRUE);
 
 		if ($post == null) {
-			redirect('log_book');
+			redirect('best_employee');
 		}
 
 		$tahun = $post['tahun'];
 		$bulan = $post['bulan'];
 
-		// Cek Admin
-		$tipe_user = $this->session->tipe_user;
-		$previllage = 2;
-		if ($tipe_user < $previllage) {
-			$id = $this->session->id;
-		} elseif ($tipe_user == '2') {
-			redirect('log_book/pimpinan/');
-		} elseif ($tipe_user == '3') {
-			redirect('log_book/kepala/');
-		} elseif ($tipe_user == '4') {
-			redirect('log_book/admin/');
-		}
+		$bulan_indonesia = array(
+			'01' => 'Januari',
+			'02' => 'Februari',
+			'03' => 'Maret',
+			'04' => 'April',
+			'05' => 'Mei',
+			'06' => 'Juni',
+			'07' => 'Juli',
+			'08' => 'Agustus',
+			'09' => 'September',
+			'10' => 'Oktober',
+			'11' => 'November',
+			'12' => 'Desember'
+		);
+		$bulan_filter=$bulan_indonesia[$bulan];
+		$query = $this->db->query("
+			SELECT tb_user.*, SUM(tb_poin.nilai) AS total_poin
+			FROM tb_user
+			JOIN tb_poin ON tb_user.id = tb_poin.user_id
+			WHERE tb_user.status=1
+			AND MONTH(tb_poin.tgl) = $bulan
+    		AND YEAR(tb_poin.tgl) = $tahun
+			GROUP BY tb_user.nama
+			ORDER BY total_poin DESC
+		");	
+		
 
-		$data['menu'] = "Kegiatan Harian Bulan " . $bulan . " Tahun " . $tahun;
-		$data['row'] = $this->log_book_m->get_spesifik($id, $tahun, $bulan);
-		$data['status_log_book'] = $this->log_book_m->cek_status_harian($id);
-		$this->templateadmin->load('template/dashboard', 'log_book/log_book_data', $data);
+		// $hasil = $query->result_array();
+		$data['hasil']=$query->result_array();
+
+		$data['menu'] = "Best Employee Bulan " . $bulan_filter . " Tahun " . $tahun;
+		// $data['row'] = $this->log_book_m->get_spesifik($id, $tahun, $bulan);
+		// $data['status_log_book'] = $this->log_book_m->cek_status_harian($id);
+		$this->templateadmin->load('template/dashboard', 'best_employee/best_employee_data', $data);
 	}
 
 	public function admin()
@@ -136,14 +208,14 @@ class Log_book extends CI_Controller
 	public function detail()
 	{
 		// Cek Admin
-		$tipe_user = $this->session->tipe_user;
-		$previllage = 2;
-		if ($tipe_user < $previllage) {
-			$this->session->set_flashdata('warning', 'Detail hanya bisa dilihat oleh admin');
-			redirect('log_book');
-		} else {
-			$id = $this->uri->segment('3');
-		}
+		// $tipe_user = $this->session->tipe_user;
+		// $previllage = 2;
+		// if ($tipe_user < $previllage) {
+		// 	$this->session->set_flashdata('warning', 'Detail hanya bisa dilihat oleh admin');
+		// 	redirect('log_book');
+		// } else {
+		// 	$id = $this->uri->segment('3');
+		// }
 
 		//Cek pimpinan
 		$jabatan = $this->fungsi->pilihan_advanced("tb_pimpinan", "user_id", $this->session->id)->row("id");

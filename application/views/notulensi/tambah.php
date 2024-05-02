@@ -100,8 +100,8 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            <button type="submit" class="btn btn-success">Tambah</button>
-            <button type="reset" class="btn btn-danger">Ulangi</button>            
+            <button type="submit" class="btn btn-success">Simpan</button>
+            <!-- <button type="reset" class="btn btn-danger">Ulangi</button>             -->
           </div>
         <?= form_close() ?>
       </div>
