@@ -73,8 +73,8 @@ base_url('/assets/dist/img/tiles.jpg') ?>); background-size: cover;">
             <div class="col-12">
               <button type="submit" name="login" class="btn btn-success btn-block">LOGIN <i class="fas fa-forward"></i></button>
               <hr>
-              <a href="<?= base_url("auth/loginOTP") ?>" class="btn btn-warning btn-block"><i class="fab fa-whatsapp"></i> Login Via No HP</a>
-              <a href="<?= base_url("auth/google") ?>" class="btn btn-danger btn-block"><i class="fab fa-google"></i> Login With Google</a>
+              <!-- <a href="<?= base_url("auth/loginOTP") ?>" class="btn btn-warning btn-block"><i class="fab fa-whatsapp"></i> Login Via No HP</a>
+              <a href="<?= base_url("auth/google") ?>" class="btn btn-danger btn-block"><i class="fab fa-google"></i> Login With Google</a> -->
               <button type="button" class="btn btn-outline-secondary btn-block btn-sm" data-toggle="modal" data-target="#modal-default">
                 <i class="fab fa-android"></i> Install Aplikasi di Android
               </button>
