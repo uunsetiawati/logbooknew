@@ -42,7 +42,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Pengisian Log Book Bulan Ini</span>
-                <span class="info-box-number"><?= $this->fungsi->hitung_rows_multiple("tb_log_book","user_id",$data_user->row("id"),"tgl",date("Y-m"))?></span>
+                <span class="info-box-number"><?= $this->fungsi->hitung_rows_triple("tb_data_logbook", "user_id", $data_user->row("id"), "no", 1, "tgl", date("Y-m")) ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -53,7 +53,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Total Pengisian Log Book</span>
-                <span class="info-box-number"><?= $this->fungsi->hitung_rows("tb_log_book","user_id",$data_user->row("id"))?></span>
+                <span class="info-box-number"><?= $this->fungsi->hitung_rows_multiple("tb_data_logbook","user_id",$data_user->row("id"),"no","1")?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -117,10 +117,13 @@
           <table class="table table-bordered table-striped" id="list_admin">
             <thead>
               <tr>
-                <th width="50px">No</th>
-                <th width="200px">Tanggal</th>
-                <th width="500px">Target</th>
-                <th width="500px">Realisasi</th>
+                <th width="5%">No</th>
+                <th width="10%">Tanggal</th>
+                <th width="30%">Deskripsi Pekerjaan</th>
+                <th width="10%">Waktu</th>
+                <th width="10%">Realisasi</th>
+                <th width="20%">Alasan</th>
+                <th width="20%">Bukti</th>
               </tr>
             </thead>
             <tbody>
@@ -136,10 +139,19 @@
                     <p><?= date("d - m - Y",strtotime($data->tgl))?></p>
                   </td>
                   <td scope="row">
-                    <p><?= $data->target?></p>
+                    <p><?= $data->pekerjaan?></p>
+                  </td>
+                  <td scope="row">
+                    <p><?= $data->waktu?></p>
                   </td>
                   <td scope="row">
                     <p><?= $data->realisasi?></p>
+                  </td>
+                  <td scope="row">
+                    <p><?= $data->alasan?></p>
+                  </td>
+                  <td scope="row">
+                    <p><?= $data->bukti?></p>
                   </td>
                 </tr>
               <?php }?>

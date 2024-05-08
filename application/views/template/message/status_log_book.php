@@ -4,7 +4,6 @@
 	</div>
 <?php } else { ?>
 	<div class="alert alert-danger alert-dismissible">
-	  Anda Belum Mengisi Hari Ini
-	  <a href="<?=base_url("log_book/tambah");?>" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Isi Log Book</a>      
+	  <a href="<?=base_url("log_book/tambah_data");?>" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Isi Log Book</a>      
 	</div>
 <?php } ?>

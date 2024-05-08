@@ -25,5 +25,7 @@
       $this->load->view("script/datatables-header");
     } elseif ($url_1 == "best_employee") {
       $this->load->view("script/datatables-header");
+    } elseif ($this->uri->segment(1) == "logbook" and $this->uri->segment(2) == "tambah_data" or $url_1 == "logbook" and $url_2 == "edit_data") {
+      $this->load->view("script/datatables-header");
     }
   ?>

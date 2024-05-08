@@ -38,5 +38,8 @@
   } elseif ($url_1 == "best_employee" and $this->uri->segment(2)== null) {
     $this->load->view("script/datatables-footer");
     $this->load->view("script/datatables-log-book");
+  } elseif ($url_1 == "log_book" and $url_2 == "tambah_data" or $url_1 == "log_book" and $url_2 == "edit_data") {
+    $this->load->view("script/summernote-footer");
+    $this->load->view("script/summernote-log-book");
   }
 ?>

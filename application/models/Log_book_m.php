@@ -13,6 +13,16 @@ class Log_book_m extends CI_Model {
 		return $query;
 	}
 
+	public function get_data($id = null) 
+	{
+		$this->db->from('tb_data_logbook');
+		if ($id != null) {
+			$this->db->where('id',$id);
+		}
+		$query = $this->db->get();
+		return $query;
+	}
+
 	public function get_user($id = null) 
 	{
 		$this->db->from('tb_user');
@@ -46,7 +56,7 @@ class Log_book_m extends CI_Model {
 
 	public function get_bulan_sekarang($id = null) 
 	{
-		$this->db->from('tb_log_book');
+		$this->db->from('tb_data_logbook');
 		if ($id != null) {
 			$this->db->where('user_id',$id);
 		}
@@ -56,9 +66,33 @@ class Log_book_m extends CI_Model {
 		return $query;
 	}
 
+	public function get_data_bulan_sekarang($id = null) 
+	{
+		$this->db->from('tb_data_logbook');
+		if ($id != null) {
+			$this->db->where('user_id',$id);
+		}
+		$this->db->like('tgl',date("Y-m"));
+		$this->db->order_by("tgl","DESC");
+		$query = $this->db->get();
+		return $query;
+	}
+
+	public function get_tgl_sekarang($id = null) 
+	{
+		$this->db->from('tb_data_logbook');
+		if ($id != null) {
+			$this->db->where('user_id',$id);
+		}
+		$this->db->like('tgl',date("Y-m-d"));
+		$this->db->order_by("no","ASC");
+		$query = $this->db->get();
+		return $query;
+	}
+
 	public function get_spesifik($id = null, $tahun = null, $bulan = null) 
 	{
-		$this->db->from('tb_log_book');
+		$this->db->from('tb_data_logbook');
 		if ($id != null) {
 			$this->db->where('user_id',$id);
 		}
@@ -96,6 +130,20 @@ class Log_book_m extends CI_Model {
 
 	  $this->db->insert('tb_log_book',$params);	  	 		  	 		   			
 	}
+	
+	function simpan_data($post,$total)
+	{
+	  
+	  $params['id'] =  "";
+	  $params['user_id'] =  $this->session->id;
+	  $params['no'] =  $total;
+	  $params['pekerjaan'] =  $post['deskripsi'];
+	  $params['waktu'] =  $post['waktu'];
+	  $params['tgl'] =  date("Y-m-d");
+	  $params['created'] =  date("Y-m-d h:i:sa");
+
+	  $this->db->insert('tb_data_logbook',$params);	  	 		  	 		   			
+	}
 
 	function update($post)
 	{
@@ -106,6 +154,21 @@ class Log_book_m extends CI_Model {
 
 	  $this->db->where('id',$params['id']);
 	  $this->db->update('tb_log_book',$params);	  	 		  	 		   			
+	}
+
+	function update_data($post)
+	{
+
+	  $params['id'] =  $post['id'];
+	  $params['pekerjaan'] =  $post['deskripsi'];
+	  $params['waktu'] =  $post['waktu'];
+	  $params['realisasi'] =  $post['realisasi'];
+	  $params['alasan'] =  $post['alasan'];
+	  $params['bukti'] =  $post['bukti'];
+	  $params['modified'] =  date("Y-m-d h:i:sa");
+
+	  $this->db->where('id',$params['id']);
+	  $this->db->update('tb_data_logbook',$params);	  	 		  	 		   			
 	}
 
 	function apresiasi($id, $nilai,$kode)

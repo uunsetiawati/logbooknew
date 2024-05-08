@@ -90,10 +90,8 @@
               <tr>
                 <!-- <th width="5%">No</th> -->
                 <th width="15%">Nama</th>
-                <th width="30%">Deskripsi Pekerjaan</th>
-                <th width="10%">Waktu</th>
-                <th width="10%">Realisasi</th>
-                <th width="20%">Alasan</th>
+                <th width="30%">Target</th>
+                <th width="30%">Realisasi</th>
                 <th width="20%">#</th>
               </tr>
             </thead>
@@ -110,69 +108,11 @@
                     <p><?= $data->nama?></p>
                   </td>
                   <td scope="row">
-                    <?php
-                      // Ambil semua pekerjaan untuk user ini pada tanggal tertentu
-                      $pekerjaan = $this->fungsi->pilihan_advanced_multiple("tb_data_logbook", "user_id", $data->id, "tgl", date("Y-m-d"))->result();
-                      
-                      // Jika tidak ada pekerjaan, tampilkan pesan "Belum Mengisi"
-                      if (empty($pekerjaan)) {
-                          echo '<span class="badge badge-danger"> Belum Mengisi </span>';
-                      } else {
-                          // Jika ada pekerjaan, tampilkan setiap pekerjaan dalam baris terpisah
-                          foreach ($pekerjaan as $kerja) {
-                              echo $kerja->no.'. '.$kerja->pekerjaan . '<br>';
-                          }
-                      }
-                    ?>
+                    <?= $this->fungsi->pilihan_advanced_multiple("tb_log_book","user_id",$data->id,"tgl",date("Y-m-d"))->row("target") == null ? '<span class="badge badge-danger"> Belum Mengisi </span>' : $this->fungsi->pilihan_advanced_multiple("tb_log_book","user_id",$data->id,"tgl",date("Y-m-d"))->row("target")?>
                   </td>
                   <td scope="row">
-                  <?php
-                      // Ambil semua pekerjaan untuk user ini pada tanggal tertentu
-                      $pekerjaan = $this->fungsi->pilihan_advanced_multiple("tb_data_logbook", "user_id", $data->id, "tgl", date("Y-m-d"))->result();
-                      
-                      // Jika tidak ada pekerjaan, tampilkan pesan "Belum Mengisi"
-                      if (empty($pekerjaan)) {
-                          echo '<span class="badge badge-danger"> Belum Mengisi </span>';
-                      } else {
-                          // Jika ada pekerjaan, tampilkan setiap pekerjaan dalam baris terpisah
-                          foreach ($pekerjaan as $kerja) {
-                              echo $kerja->waktu . '<br>';
-                          }
-                      }
-                    ?>
-                  </td>      
-                  <td scope="row">
-                  <?php
-                      // Ambil semua pekerjaan untuk user ini pada tanggal tertentu
-                      $pekerjaan = $this->fungsi->pilihan_advanced_multiple("tb_data_logbook", "user_id", $data->id, "tgl", date("Y-m-d"))->result();
-                      
-                      // Jika tidak ada pekerjaan, tampilkan pesan "Belum Mengisi"
-                      if (empty($pekerjaan)) {
-                          echo '<span class="badge badge-danger"> Belum Mengisi </span>';
-                      } else {
-                          // Jika ada pekerjaan, tampilkan setiap pekerjaan dalam baris terpisah
-                          foreach ($pekerjaan as $kerja) {
-                              echo $kerja->realisasi . '<br>';
-                          }
-                      }
-                    ?>
-                  </td>     
-                  <td scope="row">
-                  <?php
-                      // Ambil semua pekerjaan untuk user ini pada tanggal tertentu
-                      $pekerjaan = $this->fungsi->pilihan_advanced_multiple("tb_data_logbook", "user_id", $data->id, "tgl", date("Y-m-d"))->result();
-                      
-                      // Jika tidak ada pekerjaan, tampilkan pesan "Belum Mengisi"
-                      if (empty($pekerjaan)) {
-                          echo '<span class="badge badge-danger"> Belum Mengisi </span>';
-                      } else {
-                          // Jika ada pekerjaan, tampilkan setiap pekerjaan dalam baris terpisah
-                          foreach ($pekerjaan as $kerja) {
-                              echo $kerja->alasan . '<br>';
-                          }
-                      }
-                    ?>
-                  </td>           
+                    <?= $this->fungsi->pilihan_advanced_multiple("tb_log_book","user_id",$data->id,"tgl",date("Y-m-d"))->row("realisasi") == null ? '<span class="badge badge-danger"> Belum Mengisi </span>' : $this->fungsi->pilihan_advanced_multiple("tb_log_book","user_id",$data->id,"tgl",date("Y-m-d"))->row("realisasi")?>
+                  </td>                  
                   <td>
                     <a href="<?= site_url('log_book/tugas_pimpinan/'.$data->id);?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Beri Tugas</a></br>
                     <a href="<?= site_url('log_book/detail/'.$data->id);?>" class="btn btn-info btn-sm"><i class="fas fa-list"></i> Detail</a><br>
