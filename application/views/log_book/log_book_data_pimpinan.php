@@ -44,13 +44,16 @@
           <div class="table-responsive">
           <table class="table table-bordered table-striped" id="list">
             <thead>
-              <tr>
-                <th width="5%">No</th>
-                <th width="10%">Tanggal</th>
-                <th width="50%">Target</th>
-                <th width="50%">Realisasi</th>
-                <th width="20%">#</th>
-              </tr>
+            <tr>
+										<th width="5%">No</th>
+										<th width="10%">Tanggal</th>
+										<th width="30%">Deskripsi Pekerjaan</th>
+										<th width="10%">Waktu</th>
+										<th width="10%">Realisasi</th>
+										<th width="30%">Alasan</th>
+										<th width="30%">Bukti</th>
+										<th width="10%">#</th>
+									</tr>
             </thead>
             <tbody>
               <?php
@@ -65,13 +68,22 @@
                     <p><?= date("d - m - Y",strtotime($data->tgl))?></p>
                   </td>
                   <td scope="row">
-                    <p><?= $data->target?></p>
+                    <p><?= $data->pekerjaan?></p>
+                  </td>
+                  <td scope="row">
+                    <p><?= $data->waktu?></p>
                   </td>
                   <td scope="row">
                     <p><?= $data->realisasi?></p>
                   </td>
+                  <td scope="row">
+                    <p><?= $data->alasan?></p>
+                  </td>
+                  <td scope="row">
+                    <p><?= $data->bukti?></p>
+                  </td>
                   <td>
-                    <a href="<?= site_url('log_book/edit/'.$data->id);?>" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+                    <a id="btn-edit-<?=$data->id?>" href="<?= site_url('log_book/edit_data/'.$data->id);?>" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
                   </td>
                 </tr>
               <?php }?>
@@ -200,4 +212,35 @@
   </div>
   <!-- /.row -->
 </section>
-<!-- /.content --
+<!-- /.content -->
+
+<script>
+    // Fungsi untuk memeriksa waktu dan mengaktifkan tombol edit pada jam 3 sore
+    function checkTime() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+
+        // Periksa apakah waktu saat ini adalah jam 3 sore atau setelahnya
+        if (hours >= 15) { // Jam 3 sore atau setelahnya
+            // Aktifkan tombol edit
+            // document.getElementById('btn-edit').classList.remove('disabled');
+			// Aktifkan tombol edit untuk setiap ID tombol edit
+            <?php foreach ($row->result() as $key => $data) { ?>
+                document.getElementById('btn-edit-<?= $data->id ?>').classList.remove('disabled');
+            <?php } ?>
+        } else {
+            // Nonaktifkan tombol edit
+            // document.getElementById('btn-edit').classList.add('disabled');
+			// Nonaktifkan tombol edit untuk setiap ID tombol edit
+            <?php foreach ($row->result() as $key => $data) { ?>
+                document.getElementById('btn-edit-<?= $data->id ?>').classList.add('disabled');
+            <?php } ?>
+        }
+    }
+
+    // Panggil fungsi checkTime saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', function() {
+        checkTime(); // Panggil fungsi untuk memeriksa waktu saat halaman dimuat
+    });
+</script>
