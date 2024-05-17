@@ -537,7 +537,7 @@ function coba3()
 		//Load librarynya dulu
 		$this->load->library('form_validation');
 		//Atur validasinya
-		$this->form_validation->set_rules('des_tugas', 'Deskripsi Tugas', 'min_length[30]|max_length[5000]');
+		$this->form_validation->set_rules('des_tugas', 'Deskripsi Tugas', 'min_length[5]|max_length[5000]');
 
 		//Pesan yang ditampilkan
 		$this->form_validation->set_message('min_length', '{field} Setidaknya  minimal {param} karakter.');
@@ -703,8 +703,8 @@ function coba3()
 		//Load librarynya dulu
 		$this->load->library('form_validation');
 		//Atur validasinya
-		$this->form_validation->set_rules('des_tugas', 'Deskripsi Tugas', 'min_length[30]|max_length[5000]');
-		$this->form_validation->set_rules('realisasi', 'realisasi', 'min_length[30]|max_length[5000]');
+		$this->form_validation->set_rules('des_tugas', 'Deskripsi Tugas', 'min_length[5]|max_length[5000]');
+		$this->form_validation->set_rules('realisasi', 'realisasi', 'min_length[5]|max_length[5000]');
 
 		//Pesan yang ditampilkan
 		$this->form_validation->set_message('min_length', '{field} Setidaknya  minimal {param} karakter.');

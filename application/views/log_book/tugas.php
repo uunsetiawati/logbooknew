@@ -18,7 +18,7 @@
             <div class="form-group">
               <label>Deskripsi Tugas</label>
               <div class="input-group mb-3">
-                <textarea class="form-control" rows="5" col="5" name="des_tugas" id="summernote3" required minlength="30"></textarea>
+                <textarea class="form-control" rows="5" col="5" name="des_tugas" id="summernote3" required></textarea>
                 <?php echo form_error('des_tugas')?>                
               </div>                                                                  
             </div>
@@ -30,16 +30,16 @@
               <br>                     
             </div> 
 
-            <div class="form-check">
+            <!-- <div class="form-check">
               <input type="checkbox" class="form-check-input" required>
               <label class="form-check-label" for="exampleCheck1">Pastikan data sudah benar</label>
-            </div>
+            </div> -->
 
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            <button type="submit" class="btn btn-success">Tambah</button>
-            <button type="reset" class="btn btn-danger">Ulangi</button>            
+            <button type="submit" class="btn btn-success">Simpan</button>
+            <!-- <button type="reset" class="btn btn-danger">Ulangi</button>             -->
           </div>
         <?= form_close() ?>
       </div>

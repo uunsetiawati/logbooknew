@@ -76,14 +76,21 @@
                   </td>                  
                   <td scope="row">
                     <p><?= date("d - m - Y",strtotime($data->tgl))?></p>
-                  </td>
+                  </td>                  
                   <td scope="row">
                     <p><?= $data->des_tugas?></p>
                   </td>
-                  <td scope="row">
-                    
+                  <?php
+                  if(!empty($data->gambar)){
+                  ?>
+                  <td scope="row">                    
                     <img src="<?=base_url('assets/dist/img/foto-tugas/'.$data->gambar)?>" style="width: 50%"><br>
                   </td>
+                  <?php }else{ ?>
+                    <td scope="row">   
+                      <p>Tidak Ada Gambar </p>
+                  </td>
+                  <?php }?>
                   <td>
                     <?php
                     if($this->session->tipe_user == '2'){ ?>

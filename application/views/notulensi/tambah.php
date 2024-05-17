@@ -63,7 +63,7 @@
               </div>                            
               <?php echo form_error('tempat')?>                        
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label>Undangan</label>
               <div class="input-group mb-3">
                 <div class="input-group-append">
@@ -74,8 +74,8 @@
                 <input type="text" class="form-control" name="undangan" placeholder="Ex: Fitrah, UUN, Udhif, dll" value="<?= set_value('undangan');?>" required>
               </div>                            
               <?php echo form_error('undangan')?>                        
-            </div>
-            <div class="form-group">
+            </div> -->
+            <!-- <div class="form-group">
               <label>Pimpinan Rapat</label>
               <div class="input-group mb-3">
                 <div class="input-group-append">
@@ -86,7 +86,7 @@
                 <input type="text" class="form-control" name="pimpinan" placeholder="Ex: Pengumuman Bagi Petani" value="<?= set_value('pimpinan');?>" required>
               </div>                            
               <?php echo form_error('pimpinan')?>                        
-            </div>
+            </div> -->
 
             <div class="form-group">
               <label>Pembahasan</label>

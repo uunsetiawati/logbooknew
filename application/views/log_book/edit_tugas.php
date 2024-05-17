@@ -19,7 +19,7 @@
             <div class="form-group">
               <label>Deskripsi Tugas</label>
               <div class="input-group mb-3">
-                <textarea class="form-control" rows="5" col="5" name="des_tugas" id="summernote3" required minlength="100"><?= $this->input->post('des_tugas') ?? $row->des_tugas ?></textarea>
+                <textarea class="form-control" rows="5" col="5" name="des_tugas" id="summernote3" required><?= $this->input->post('des_tugas') ?? $row->des_tugas ?></textarea>
                 <?php echo form_error('des_tugas')?>                
               </div>                                                                  
             </div>
@@ -34,20 +34,20 @@
             <div class="form-group">
               <label>Gambar</label>
               <input type="file" class="form-control" accept=".jpg,.png,.jpeg" name="gambar">
-              <small>Maksimal ukuran file 514 Kb</small>
+              <small>Maksimal ukuran file 1 Mb</small>
               <br>                     
             </div>            
             <?php } ?>
                                     
-            <div class="form-check">
+            <!-- <div class="form-check">
               <input type="checkbox" class="form-check-input" required>
               <label class="form-check-label" for="exampleCheck1">Pastikan data sudah benar</label>
-            </div>
+            </div> -->
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            <button type="submit" class="btn btn-success">Edit</button>
-            <button type="reset" class="btn btn-danger">Ulangi</button>            
+            <button type="submit" class="btn btn-success">Simpan</button>
+            <!-- <button type="reset" class="btn btn-danger">Ulangi</button>             -->
           </div>
         <?= form_close() ?>
       </div>
