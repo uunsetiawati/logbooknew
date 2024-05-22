@@ -71,8 +71,12 @@
                     <p><?= $data->des_tugas?></p>
                   </td>
                   <td scope="row">
+                    <?php if(!empty($data->gambar)){?>
                     
                     <img src="<?=base_url('assets/dist/img/foto-tugas/'.$data->gambar)?>" style="width: 50%"><br>
+                    <?php }else{?>
+                      <p>Tidak Ada Gambar</p>
+                    <?php }?>
                   </td>
                   <td>
                    

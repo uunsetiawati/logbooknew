@@ -96,7 +96,7 @@
 												<p><?= $data->bukti ?></p>
 											</td>
 											<td>
-												<a id="btn-edit-<?=$data->id?>" href="<?= site_url('log_book/edit_data/' . $data->id); ?>" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+												<a id="btn-edit-<?=$data->id?>" href="<?= site_url('log_book/edit_data/' . $data->id); ?>" class="btn btn-info btn-sm" onclick="return checkEditTime(<?= $data->id ?>)"><i class="fas fa-edit"></i></a>
 											</td>
 										</tr>
 									<?php } ?>
@@ -140,8 +140,24 @@
         }
     }
 
+	function checkEditTime(id) {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+
+        // Periksa apakah waktu saat ini adalah jam 3 sore atau setelahnya
+        if (hours < 15) { // Jam 3 sore atau setelahnya
+            // return confirm('Apakah Anda yakin ingin mengedit data ini?');
+			alert('Baru Bisa di Edit pada Pukul 15.00 WIB');
+            return false;
+        // } else {
+        //     alert('Baru Bisa di Edit pada Pukul 15.00 WIB');
+        //     return false;
+        }
+    }
+
     // Panggil fungsi checkTime saat halaman dimuat
-    document.addEventListener('DOMContentLoaded', function() {
-        checkTime(); // Panggil fungsi untuk memeriksa waktu saat halaman dimuat
-    });
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     checkTime(); // Panggil fungsi untuk memeriksa waktu saat halaman dimuat
+    // });
 </script>
