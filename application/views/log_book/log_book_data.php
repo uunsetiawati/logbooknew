@@ -16,7 +16,7 @@
 					<span class="info-box-icon bg-info"><i class="far fa-gem"></i></span>
 					<div class="info-box-content">
 						<span class="info-box-text">UPT Poin</span>
-						<span class="info-box-number"><?= $this->fungsi->hitung_nilai_multiple("tb_poin", "nilai", "user_id", $this->session->id, "kategori_penilaian", "1") == null ? 0 : $this->fungsi->hitung_nilai("tb_poin", "nilai", "user_id", $this->session->id) ?></span>
+						<span class="info-box-number"><?=$this->fungsi->hitung_nilai("tb_poin", "nilai", "user_id", $this->session->id) ?></span>
 					</div>
 				</div>
 				<form action="<?= base_url("log_book/filter_data/") ?>" enctype="multipart/form-data" method="post" accept-charset="utf-8">
