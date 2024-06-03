@@ -237,7 +237,7 @@
 				<div class="col"><a class="text-white" href="<?= base_url('') ?>"><i class="fas fa-home"></i></a></div>
 				<!-- <div class="col"><a class="text-white" href="<?= base_url('profil') ?>"><i class="fas fa-user-cog"></i></a></div> -->
 				<?php if ($this->session->tipe_user == '1') { ?>
-					<div class="col"><a class="text-white" href="<?= base_url('lihat_tugas/lihat') ?>"><i class="fas fa-edit"></i></a></div>
+					<div class="col"><a class="text-white" href="<?= base_url('lihat_tugas/lihat/' . $this->session->id) ?>"><i class="fas fa-edit"></i></a></div>
 				<?php }else{ ?>
 					<div class="col"><a class="text-white" href="<?= base_url('page/tentang') ?>"><i class="fas fa-edit"></i></a></div>
 				<?php }?>
