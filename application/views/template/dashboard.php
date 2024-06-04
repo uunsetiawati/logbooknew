@@ -233,7 +233,7 @@
 
 		<footer class="main-footer text-center bg-success d-lg-none">
 			<div class="row text-white">
-				<div class="col"><a class="text-white" href="<?= base_url('log_book') ?>"><i class="fas fa-book"></i></a></div>
+				<div class="col"><a class="text-white" href="<?= base_url('best_employee') ?>"><i class="fas fa-medal"></i></a></div>
 				<div class="col"><a class="text-white" href="<?= base_url('') ?>"><i class="fas fa-home"></i></a></div>
 				<!-- <div class="col"><a class="text-white" href="<?= base_url('profil') ?>"><i class="fas fa-user-cog"></i></a></div> -->
 				<?php if ($this->session->tipe_user == '1') { ?>

@@ -146,9 +146,9 @@
         var minutes = now.getMinutes();
 
         // Periksa apakah waktu saat ini adalah jam 3 sore atau setelahnya
-        if (hours < 15) { // Jam 3 sore atau setelahnya
+        if (hours < 14) { // Jam 3 sore atau setelahnya
             // return confirm('Apakah Anda yakin ingin mengedit data ini?');
-			alert('Baru Bisa di Edit pada Pukul 15.00 WIB');
+			alert('Baru Bisa di Edit pada Pukul 14.00 WIB');
             return false;
         // } else {
         //     alert('Baru Bisa di Edit pada Pukul 15.00 WIB');

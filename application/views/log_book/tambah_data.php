@@ -188,7 +188,7 @@
         var minutes = now.getMinutes();
 
         // Periksa apakah waktu saat ini adalah jam 3 sore atau setelahnya
-        if (hours >= 15) { // Jam 3 sore atau setelahnya
+        if (hours >= 14) { // Jam 3 sore atau setelahnya
             // Aktifkan tombol edit
             // document.getElementById('btn-edit').classList.remove('disabled');
             // Aktifkan tombol edit untuk setiap ID tombol edit
