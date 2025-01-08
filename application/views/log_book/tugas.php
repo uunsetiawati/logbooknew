@@ -25,8 +25,8 @@
                            
             <div class="form-group">
               <label>Gambar</label>
-              <input type="file" class="form-control" accept=".jpg,.png,.jpeg" name="gambar">
-              <small>Maksimal ukuran file 1 Mb</small>
+              <input type="file" class="form-control" accept=".jpg,.png,.jpeg,.doc,.docx,.pdf,.ppt,.pptx" name="gambar">
+              <small>Maksimal ukuran file 10 Mb</small>
               <br>                     
             </div> 
 

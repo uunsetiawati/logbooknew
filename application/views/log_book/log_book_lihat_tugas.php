@@ -71,12 +71,24 @@
                     <p><?= $data->des_tugas?></p>
                   </td>
                   <td scope="row">
+                  
+                  <?php
+                  $file = base_url('assets/dist/img/foto-tugas/'.$data->gambar);
+                  $file_extension = pathinfo($file, PATHINFO_EXTENSION);
+                  ?>
                     <?php if(!empty($data->gambar)){?>
                     
-                    <img src="<?=base_url('assets/dist/img/foto-tugas/'.$data->gambar)?>" style="width: 50%"><br>
-                    <?php }else{?>
-                      <p>Tidak Ada Gambar</p>
-                    <?php }?>
+                      <?php
+                      if (in_array($file_extension, ['jpg', 'png', 'jpeg', 'gif', 'JPG', 'JPEG', 'PNG'])): ?>
+                        <img src="<?=base_url('assets/dist/img/foto-tugas/'.$data->gambar)?>" width="50%">	
+                      <?php elseif (in_array($file_extension, ['pdf', 'doc', 'docx', 'ppt', 'pptx'])): 
+                        echo anchor('assets/dist/img/foto-tugas/'.$data->gambar, 'Download Data', array('class'=>'button', 'target' => '_blank'));
+                            endif; 
+                    ?>  
+                    <?php }else{ ?>
+                     
+                      <p>Tidak Ada Data </p>
+                      <?php }?>
                   </td>
                   <td>
                    

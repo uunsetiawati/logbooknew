@@ -57,7 +57,7 @@
                 <th width="5%">No</th>
                 <th width="10%">Tanggal</th>
                 <th width="50%">Deskripsi Tugas</th>
-                <th width="50%">Gambar</th>
+                <th width="50%">Data</th>
                 <?php 
                 if($this->session->tipe_user == '2'){ ?>
                 <th width="20%">#</th>
@@ -81,14 +81,26 @@
                     <p><?= $data->des_tugas?></p>
                   </td>
                   <?php
+                  $file = base_url('assets/dist/img/foto-tugas/'.$data->gambar);
+                  $file_extension = pathinfo($file, PATHINFO_EXTENSION);
+                  ?>
+                  <?php
                   if(!empty($data->gambar)){
                   ?>
-                  <td scope="row">                    
-                    <img src="<?=base_url('assets/dist/img/foto-tugas/'.$data->gambar)?>" style="width: 50%"><br>
+                  <td scope="row">
+
+                    <?php
+                      if (in_array($file_extension, ['jpg', 'png', 'jpeg', 'gif', 'JPG', 'JPEG', 'PNG'])): ?>
+                        <img src="<?=base_url('assets/dist/img/foto-tugas/'.$data->gambar)?>" width="50%">	
+                      <?php elseif (in_array($file_extension, ['pdf', 'doc', 'docx', 'ppt', 'pptx'])): 
+                        echo anchor('assets/dist/img/foto-tugas/'.$data->gambar, 'Download Data', array('class'=>'button', 'target' => '_blank'));
+                            endif; 
+                    ?>                                     
+                    
                   </td>
                   <?php }else{ ?>
                     <td scope="row">   
-                      <p>Tidak Ada Gambar </p>
+                      <p>Tidak Ada Data </p>
                   </td>
                   <?php }?>
                   <td>

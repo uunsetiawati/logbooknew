@@ -24,16 +24,27 @@
               </div>                                                                  
             </div>
 
+            <?php
+                  $file = base_url('assets/dist/img/foto-tugas/'.$row->gambar);
+                  $file_extension = pathinfo($file, PATHINFO_EXTENSION);
+                  ?>
             <?php if($row->gambar != null) {?>
             <div>
+              <?php 
+              if (in_array($file_extension, ['jpg', 'png', 'jpeg', 'gif', 'JPG', 'JPEG', 'PNG'])): ?>
+              
               <img src="<?=base_url('assets/dist/img/foto-tugas/'.$row->gambar)?>" style="width: 50%"><br>
+              <?php elseif (in_array($file_extension, ['pdf', 'doc', 'docx', 'ppt', 'pptx'])): 
+                  echo anchor('assets/dist/img/foto-tugas/'.$row->gambar, 'Download Data', array('class'=>'button', 'target' => '_blank'));
+                  endif; ?><br>
               <input type="hidden" name="gambar" value="<?= $this->input->post('gambar') ?? $row->gambar; ?>">
-              <a href="<?= site_url('log_book/hapusgambar/'.$row->id);?>"><small>Hapus gambar?</small></a> 
+              
+              <a href="<?= site_url('log_book/hapusgambar/'.$row->id);?>"><small>Hapus data?</small></a> 
             </div>
             <?php } else {  ?>             
             <div class="form-group">
-              <label>Gambar</label>
-              <input type="file" class="form-control" accept=".jpg,.png,.jpeg" name="gambar">
+              <label>Data</label>
+              <input type="file" class="form-control" accept=".jpg,.png,.jpeg,.pdf,.doc,.docx,.ppt,.pptx" name="gambar">
               <small>Maksimal ukuran file 1 Mb</small>
               <br>                     
             </div>            

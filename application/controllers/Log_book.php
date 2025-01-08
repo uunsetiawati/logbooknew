@@ -558,8 +558,8 @@ function coba3()
 			$post = $this->input->post(null, TRUE);
 			$tgl = date('d-m-Y');
 			$config['upload_path']          = 'assets/dist/img/foto-tugas';
-			$config['allowed_types']        = 'jpg|png|jpeg';
-			$config['max_size']             = 1000;
+			$config['allowed_types']        = 'jpg|png|jpeg|pdf|doc|docx|ppt|pptx';
+			$config['max_size']             = 100000;
 			$config['file_name']            = $id . '--' . $tgl;
 
 			$this->load->library('upload', $config);
@@ -730,8 +730,8 @@ function coba3()
 			$query = $this->log_book_m->get_tugas($id);
 			//CEK GAMBAR
 			$config['upload_path']          = 'assets/dist/img/foto-tugas/';
-			$config['allowed_types']        = 'jpg|png|jpeg';
-			$config['max_size']             = 1000;
+			$config['allowed_types']        = 'jpg|png|jpeg|pdf|doc|docx|ppt|pptx';
+			$config['max_size']             = 100000;
 			$config['file_name']            = $query->row('user_id') . '--' . $tgl;
 
 			$this->load->library('upload', $config);
