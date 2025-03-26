@@ -59,6 +59,8 @@ class Page extends CI_Controller {
 			$url = "https://drive.google.com/embeddedfolderview?id=1cIfIhfuytLJzazBlCtN1VyF8yLQ7bqDV#list";
 		} elseif ($kode == "cloudkirim") {
 			$url = "https://drive.google.com/embeddedfolderview?id=13S7AQ1SjbE3BnyXiJ5C8fqiGJCEk_gmw#list";
+		} elseif ($kode == "clouddak") {
+			$url = "https://drive.google.com/embeddedfolderview?id=1tnkuDbmdk84jbyVD2zNt50X9B0E3TILq#list";
 		}
 		$data['link'] = $url;
 		$data['menu'] = "Cloud Doc";
