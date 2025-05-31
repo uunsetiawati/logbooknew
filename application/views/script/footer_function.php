@@ -29,7 +29,10 @@
   } elseif ($url_1 == "link" and $this->uri->segment(2)== null) {
     $this->load->view("script/datatables-footer");
     $this->load->view("script/datatables-link");
-  } elseif ($url_1 == "agenda" and $this->uri->segment(2)== null) {
+  } elseif ($url_1 == "aset" and $this->uri->segment(2)== null) {
+    $this->load->view("script/datatables-footer");
+    $this->load->view("script/datatables-aset");
+  }elseif ($url_1 == "agenda" and $this->uri->segment(2)== null) {
     $this->load->view("script/datatables-footer");
     $this->load->view("script/datatables-agenda");
   } elseif ($url_1 == "publik" and $this->uri->segment(2)== "agenda") {

@@ -19,6 +19,8 @@
       $this->load->view("script/summernote-header");
     } elseif ($this->uri->segment(1) == "link" and $this->uri->segment(2) == null) {
       $this->load->view("script/datatables-header");
+    } elseif ($this->uri->segment(1) == "aset" and $this->uri->segment(2) == null) {
+      $this->load->view("script/datatables-header");
     } elseif ($this->uri->segment(1) == "agenda" and $this->uri->segment(2) == null) {
       $this->load->view("script/datatables-header");
     } elseif ($this->uri->segment(1) == "publik" and $this->uri->segment(2) == "agenda") {
