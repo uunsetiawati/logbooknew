@@ -20,10 +20,10 @@
   } elseif ($url_1 == "lihat_tugas" and $url_2 == "lihat") {
     $this->load->view("script/datatables-footer");
     $this->load->view("script/datatables-log-book");
-  } elseif ($url_1 == "log_book" and $url_2 == "kepala" or $url_1 == "log_book" and $url_2 == "pimpinan" or $url_1 == "log_book" and $url_2 == "detail" or $url_1 == "log_book" and $url_2 == "tugas_pimpinan") {
+  } elseif ($url_1 == "log_book" and $url_2 == "kepala" or $url_1 == "log_book" and $url_2 == "pimpinan" or $url_1 == "log_book" and $url_2 == "detail" or $url_1 == "log_book" and $url_2 == "tugas_pimpinan" or $url_1 == "aset" and $url_2 == "lihat_aset" or $url_1 == "aset" and $url_2 =="detail_aset") {
     $this->load->view("script/datatables-footer");
     $this->load->view("script/datatables-log-book");
-  } elseif ($url_1 == "log_book" and $url_2 == "tambah" or $url_1 == "log_book" and $url_2 == "edit" or $url_1 == "log_book" and $url_2 == "tugas" or $url_1 == "log_book" and $url_2 == "edit_tugas") {
+  } elseif ($url_1 == "log_book" and $url_2 == "tambah" or $url_1 == "log_book" and $url_2 == "edit" or $url_1 == "log_book" and $url_2 == "tugas" or $url_1 == "log_book" and $url_2 == "edit_tugas" or $url_1 == "aset" and $url_2 == "lihat_aset") {
     $this->load->view("script/summernote-footer");
     $this->load->view("script/summernote-log-book");
   } elseif ($url_1 == "link" and $this->uri->segment(2)== null) {
@@ -32,7 +32,10 @@
   } elseif ($url_1 == "aset" and $this->uri->segment(2)== null) {
     $this->load->view("script/datatables-footer");
     $this->load->view("script/datatables-aset");
-  }elseif ($url_1 == "agenda" and $this->uri->segment(2)== null) {
+  } elseif ($url_1 == "aset" and $this->uri->segment(2) == "lihat_aset") {
+    $this->load->view("script/datatables-footer");
+    $this->load->view("script/datatables-lihat-aset");
+  } elseif ($url_1 == "agenda" and $this->uri->segment(2)== null) {
     $this->load->view("script/datatables-footer");
     $this->load->view("script/datatables-agenda");
   } elseif ($url_1 == "publik" and $this->uri->segment(2)== "agenda") {

@@ -15,6 +15,37 @@ class Aset_m extends CI_Model
 		return $query;
 	}
 
+	public function get_spesifik($key = null, $tahun = null, $bulan = null) 
+	{
+		$this->db->from('tb_aset');
+		if ($key != null) {
+			// $this->db->where('keterangan',$key);
+			$this->db->like('keterangan',$key);
+		}
+		
+		$this->db->order_by("keterangan","ASC");
+		$query = $this->db->get();
+		return $query;
+	}
+
+	public function get_user($key = null, $tahun = null, $bulan = null) 
+	{
+		$this->db->from('tb_user');
+		if ($key != null) {
+			// Hilangkan gelar setelah koma jika ada
+			$nama_bersih = explode(',', $key)[0];
+			$this->db->like('nama', trim($nama_bersih), 'after'); // cocokkan bagian depan
+			// $key = strtolower(trim($key)); // bersihkan input
+        	// $this->db->like('LOWER(nama)', $key); // pencarian tidak case-sensitive
+		}
+		
+		$this->db->order_by("nama","DESC");
+		$query = $this->db->get();
+		return $query;
+	}
+
+	
+
 	// DATATABLES
 	var $table = 'tb_aset'; //nama tabel dari database
 	var $column_order = array(null, 'nama_aset', 'tgl_beli', 'keterangan'); //field yang ada di table user

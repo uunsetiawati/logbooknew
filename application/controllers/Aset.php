@@ -8,6 +8,7 @@ class Aset extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('aset_m');
+		check_not_login();
 	}
 	
 	function index()
@@ -41,6 +42,27 @@ class Aset extends CI_Controller
 		}
 	}
 
+	public function detail_aset()
+	{
+		$previllage = 1;
+
+		$key = urldecode($this->uri->segment(3));
+		$query = $this->aset_m->get_spesifik($key);
+		$query_user = $this->aset_m->get_user($key);
+		
+		if ($query->num_rows() > 0) {
+			$data['row'] = $query->row();
+			$data['user'] = $query_user->row();
+			$data['total'] = $query->num_rows();
+			$data['menu'] = "Data Aset Detail";
+			$data['aset'] =$query->result();
+			$this->templateadmin->load('template/dashboard', 'aset/detail_aset', $data);
+		} else {
+			echo "<script>alert('Data Tidak Ditemukan');</script>";
+			echo "<script>window.location='" . site_url('user') . "';</script>";
+		}
+	}
+
 	// DATATABLES
 	function get_data_aset()
 	{
@@ -52,12 +74,22 @@ class Aset extends CI_Controller
 			$row = array();
 			$row[] = $no;
 			$row[] = $field->nama_aset;
-			$row[] = $field->jumlah;
+			$row[] = $field->model;
 			$row[] = date('d-m-Y', strtotime($field->tgl_beli));
 			$row[] = $field->keterangan;
-			$row[] = '<a href="' . base_url("aset/detail/" . $field->id) . '" class="btn btn-success btn-xs"><i class="fas fa-eye"></i> Lihat</a><a href="' . base_url("aset/edit/" . $field->id) . '" class="btn btn-info btn-xs"><i class="fas fa-edit"></i> Edit</a>
-            		  <a href="' . base_url("aset/hapus/" . $field->id) . '" class="btn btn-danger btn-xs" onclick="return confirm(\'Apakah Anda yakin ingin menghapus data ini?\');"><i class="fas fa-trash"></i> Hapus</a>
-            		 ';
+			// Cek akses user
+			$gambar = $field->gambar;
+			$gambar_url = base_url('assets/dist/img/foto-aset/' . $field->gambar);
+			if ($this->fungsi->hitung_rows("akses_aset", "user_id", $this->session->id) != null || $this->session->tipe_user == '4') {
+				$aksi = '<a href="' . base_url("aset/detail/" . $field->id) . '" class="btn btn-success btn-xs"><i class="fas fa-eye"></i> Lihat</a>
+						<a href="' . base_url("aset/edit/" . $field->id) . '" class="btn btn-info btn-xs"><i class="fas fa-edit"></i> Edit</a>
+						<a href="' . base_url("aset/hapus/" . $field->id) . '" class="btn btn-danger btn-xs" onclick="return confirm(\'Apakah Anda yakin ingin menghapus data ini?\');"><i class="fas fa-trash"></i> Hapus</a>';
+			} elseif(!empty($gambar) && file_exists(FCPATH . 'assets/dist/img/foto-aset/' . $gambar)){								
+				$aksi = '<img src="' . $gambar_url . '" alt="Gambar Aset" width="80">';
+			} else{
+				$aksi = "";
+			}
+			$row[] = $aksi;
 			
 			$data[] = $row;
 		}
@@ -209,6 +241,42 @@ class Aset extends CI_Controller
 		$this->db->where('id', $id);
 		$this->db->update('tb_aset', $params);
 		redirect('aset/edit/' . $id);
+	}
+
+	public function lihat_aset()
+	{
+		$post = $this->input->post("ket", FALSE);
+		$id_user = $this->uri->segment('3');
+		
+		$query = $this->db->select("keterangan as kt", FALSE)
+                        ->distinct()
+                        ->order_by("kt","ASC")
+                        ->get("tb_aset")
+                        ->result();
+		$data['keterangan'] = $query;
+
+		if(!empty($post) && $post != "semua"){ // jika filter tidak dipilih dan bukan semua nama
+			$data_aset = $this->db->where("keterangan", $post)
+						->order_by("keterangan", "ASC")
+						->get("tb_aset")
+						->result();
+		}else{
+			// Ambil semua data aset dan urutkan berdasarkan keterangan
+			$data_aset = $this->db->order_by("keterangan", "ASC")
+						->get("tb_aset")
+						->result();
+		}
+
+		// Kelompokkan berdasarkan keterangan
+		$grouped = [];
+		foreach ($data_aset as $row) {
+			$grouped[$row->keterangan][] = $row;
+		}
+		
+		$query = $this->aset_m->get();
+		$data['menu'] = "Data Rangkuman Aset";
+		$data['row'] = $grouped;
+		$this->templateadmin->load('template/dashboard','aset/lihat_aset',$data);
 	}
 
 }

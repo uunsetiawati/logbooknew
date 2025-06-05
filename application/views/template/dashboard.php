@@ -193,14 +193,13 @@
 							</a>
 						</li>
 						<?php } ?>
-						<?php if ($this->fungsi->hitung_rows("akses_aset", "user_id", $this->session->id) != null or $this->session->tipe_user == '4') { ?>
+						
 						<li class="nav-item">
 							<a href="<?= site_url('aset') ?>" class="nav-link <?= $this->uri->segment(1) == 'aset' ? "active" : "" ?>">
 								<i class="nav-icon fas fa-edit"></i>
 								<p>Aset</p>
 							</a>
 						</li>
-						<?php } ?>
 					</ul>
 				</nav>
 				<!-- /.sidebar-menu -->

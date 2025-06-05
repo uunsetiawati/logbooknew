@@ -19,7 +19,9 @@
       $this->load->view("script/summernote-header");
     } elseif ($this->uri->segment(1) == "link" and $this->uri->segment(2) == null) {
       $this->load->view("script/datatables-header");
-    } elseif ($this->uri->segment(1) == "aset" and $this->uri->segment(2) == null) {
+    } elseif ($this->uri->segment(1) == "aset" and $this->uri->segment(2) == null or $url_1 == "aset" and $url_2 == "detail_aset") {
+      $this->load->view("script/datatables-header");
+    } elseif ($this->uri->segment(1) == "aset" and $this->uri->segment(2) == "lihat_aset") {
       $this->load->view("script/datatables-header");
     } elseif ($this->uri->segment(1) == "agenda" and $this->uri->segment(2) == null) {
       $this->load->view("script/datatables-header");
