@@ -11,10 +11,16 @@
           <div class="card card-primary card-outline">
             <div class="card-body box-profile">
               <div class="text-center">
-                <img class="img-fluid img-circle" src="<?=base_url()?>/assets/dist/img/foto-user/<?= ($user->foto != null) ? $user->foto : "foto-default.png";?>" alt="User profile picture" width = "200px">
+                <?php 
+                if(!empty($user->foto)):?>
+                  <img class="img-fluid img-circle" src="<?=base_url()?>/assets/dist/img/foto-user/<?= ($user->foto != null) ? $user->foto : "foto-default.png";?>" alt="User profile picture" width = "200px">
+                  <h3 class="profile-username text-center"><?= $user->nama?></h3>
+                  <p class="text-muted text-center"><?= $this->fungsi->get_deskripsi("tb_tipe_user",$user->tipe_user)?></p>
+                <?php else:?>
+                  <img class="img-fluid img-circle" src="<?=base_url()?>/assets/dist/img/foto-user/foto-default.png" alt="User profile picture" width = "200px">
+                <?php endif;?>
               </div>
-              <h3 class="profile-username text-center"><?= $user->nama?></h3>
-              <p class="text-muted text-center"><?= $this->fungsi->get_deskripsi("tb_tipe_user",$user->tipe_user)?></p>
+              
             </div>
             <!-- /.card-body -->
           </div>
